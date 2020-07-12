@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% block stylesheets %}
+    
+    {% endblock %}
+    {% block javascripts %}{% endblock %}
+    
+  <meta charset="utf-8">
+  <title>{% block title %}Bienvenue Chez nous {% endblock %}</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+
+    <body>
+    <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+            <div class="container">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="/home">Bienvenue</a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Acceuil</a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="#examples">Les plus Visitée</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contacter Nous</a>
+                        </li>
+                        -->
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/destination">Nos destinations</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/circuit">Nos Circuits</a>
+                        </li>
+                        
+                         <li class="nav-item">
+                            <a class="nav-link" href="/ville">Tp3</a>
+                        </li>
+                    
+                    </ul>
+                
+                    <!-- Links -->
+
+                    <!-- Social Icon  -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Collapsible content -->
+                 
+            </div>
+            {% if not app.user %}
+                        <div class="text-right">
+          <a href="{{ path('security_login') }}" class="btn btn-info btn-sm">Connexion </a>
+          </div>
+          {% else %}
+          <div class="text-right">
+          <a href="{{ path('security_logout') }}" class="btn btn-info btn-sm">Deconnexion</a>
+          </div>
+            {% endif %}
+        </nav>
+        <!--/.Navbar-->
+
+            {% block body %}{% endblock %}
+            
+    </body>
+</html>

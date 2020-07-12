@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+body {
+  background: url("https://chapelboromedia.s3.amazonaws.com/uploads/2019/04/19113915/aircraft-aircraft-wing-airplane-2007401-e1555688403566.jpg")repeat center center fixed;
+}
+#login .container #login-row #login-column .login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-image: linear-gradient(to bottom, #aec1c3, #a9b5b7, #bcc5c6, #cfd5d5, #e3e5e5);
+}
+#login .container #login-row #login-column .login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column .login-box #login-form #register-link {
+  margin-top: -85px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<body>
+	<div id="login">
+    <h3 class="text-center text-white pt-5"></h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div class="login-box col-md-12">
+                    
+                        <h3 class="text-center text-info">Modifier la circuit</h3>
+                        <div class="form-group">
+                           
+                           {{ form_start(form) }}
+                           
+                           {{form_rest(form)}}
+                            <button  class="btn btn-primary">Save</button>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+               
+
+                    <div class="row d-flex justify-content-center text-center">
+    <div class="col-md-10">
+    <h5 class="display-4 font-weight-bold white-text pt-3 mb-2" > les etapes de ce circuit</h2>
+
+                            <ul class="list-group">
+                                 {% for e in etapes.etape %}
+                                   
+                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{e.VilleEtape.Desville}}
+                                        <br/>
+                                            <span class="badge badge-primary badge-pill"> Circuit: {{e.CircuitEtape.DesCircuit}}</span>
+                                            <span class="badge badge-primary badge-pill"> Duree: {{e.DureeEtape}}</span>
+                                            <span class="badge badge-primary badge-pill"> Ordre : {{e.OrdreEtape}}</span>
+                                            <div>
+                                   <a href="{{ path('etape_delete', {'id':e.Id}) }}" onclick="return confirm('attention ce ci va supprimer')" class="btn btn-danger"> supprimer </a>
+                                  <a   href="{{ path('modifier_etape', {'id':e.id}) }}" class="btn btn-outline-info">edit </a>
+</div>
+                                 {% endfor %}
+                            </ul>
+                            <br/><br/><br/>
+
+                            <div class="text-right">
+          <a href="{{ path('ajouter_etape') }}" class="btn btn-primary">Ajouter une etape</a>
+          </div>
+          
+           </div>
+        
+    </div>
+                            {{ form_end(form) }}  
+</body>
+{% endblock %}

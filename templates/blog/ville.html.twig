@@ -1,0 +1,107 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <style>
+    
+    html,
+body,
+header,
+#intro {
+    height: 115%;
+}
+
+#intro {
+    background: url("https://miro.medium.com/max/4400/1*e6qnENgq59o4cCwxfGal3g.jpeg")repeat center center fixed;
+   
+}
+
+.top-nav-collapse {
+    background-color: #24355C;
+  }
+  @media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+      background-color: #24355C;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 850px) {
+    .navbar:not(.top-nav-collapse) {
+      background-color: #24355C;
+    }
+  }
+    
+    </style>
+    {% endblock %}
+{% block body%}
+
+
+<div id="intro" class="view">
+
+            <div class="mask rgba-black-strong">
+
+                <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+
+                    <div class="row d-flex justify-content-center text-center">
+
+                        <div class="col-md-10">
+
+                            <!-- Heading -->
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/><br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            
+
+
+                            <h5 class="display-4 font-weight-bold white-text pt-3 mb-2" > Les villes qui ont pas de circuit</h2>
+
+                            <ul class="list-group">
+                                 {% for ville in v.villes%}
+                                   {% if ville.etapes.count == 0%}
+                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ville.getDesVille()}}
+                                            <span class="badge badge-primary badge-pill"> id = {{ville.id}}</span>
+                                   {% endif %}
+
+                                 {% endfor %}
+                            </ul>
+                            <h5 class="display-4 font-weight-bold white-text pt-5 mb-2"style="color:red">les villes qui ont un order d'etapes 1</h5>
+                            <ul class="list-group">
+                                 {% for ville in v1.v%}
+                                   
+                                   
+                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ville.getDesVille()}}
+                                            <span class="badge badge-primary badge-pill"> id de la ville = {{ville.id}}</span>
+                                          
+                                          
+                                 {% endfor %}
+                            </ul>
+                            <h5 class="display-4 font-weight-bold white-text pt-5 mb-2"style="color:red">la durée la plus longue d’une étape pour la ville Hurghada</h5>
+                            <ul class="list-group">
+                                 {% for e in v2.hur %}
+                                   
+                                   
+                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{e.getVilleEtape().getDesVille()}}
+                                            <span class="badge badge-primary badge-pill"> Duree {{e.getDureeEtape()}}</span>
+                                            <span class="badge badge-primary badge-pill"> Circuit {{e.getCircuitEtape().getDesCircuit()}}</span>
+                                         
+                                          
+                                 {% endfor %}
+                            </ul>
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

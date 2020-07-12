@@ -1,0 +1,101 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+body {
+  background: url("https://chapelboromedia.s3.amazonaws.com/uploads/2019/04/19113915/aircraft-aircraft-wing-airplane-2007401-e1555688403566.jpg")repeat center center fixed;
+}
+#login .container #login-row #login-column .login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-image: linear-gradient(to bottom, #aec1c3, #a9b5b7, #bcc5c6, #cfd5d5, #e3e5e5);
+}
+#login .container #login-row #login-column .login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column .login-box #login-form #register-link {
+  margin-top: -85px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<body>
+	<div id="login">
+    <h3 class="text-center text-white pt-5"></h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div class="login-box col-md-12">
+                    
+                        <h3 class="text-center text-info">editer la Destination </h3>
+                        <div class="form-group">
+                           
+                        {{ form_start(form) }}
+                         
+                        
+                        
+                        {{form_widget(form)}}
+                        <button  class="btn btn-primary">Save</button>
+                       
+                        </div>
+                                   
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2> <br/><br/><br/>les villes qui lui correspond <b></b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+	  
+
+			<div class="carousel-inner">
+				<div class="item carousel-item active">
+					<div class="row">
+          {% for ville in villes.villes %}
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<div class="img-box">
+									<img src="{{  vich_uploader_asset(ville, 'imageFile') }}" class="img-responsive img-fluid" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>{{ville.getDesVille()}}</h4>
+                  <h4> id: {{ville.getCodeVille()}}</h4>
+								
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{{ path('ville_delete', {'id':ville.id}) }}" onclick="return confirm('attention ce ci va supprimer')" class="btn btn-danger"> supprimer </a>
+                  <a   href="{{ path('modifier_ville', {'id':ville.id}) }}" class="btn btn-outline-info">edit </a>
+								</div>						
+							</div>
+						</div>
+            {% endfor %}
+          
+            </div>
+            </div>
+             
+            </div>
+            
+            </div>
+            </div>
+            </div>
+            
+                       
+                       
+                   <div class="text-right">
+          <a href="{{ path('ajouter_ville') }}" class="btn btn-primary">Ajouter une ville</a>
+          </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     {{ form_end(form) }}
+</div>
+</body>
+{% endblock %}
+  

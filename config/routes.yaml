@@ -1,0 +1,10 @@
+route:
+   path: /
+   controller: App\Controller\BlogController::home
+index:
+   path: /destination
+   controller: App\Controller\BlogController::index
+c:
+   path: /ville
+   controller: App\Controller\BlogController::ville_no_circuit
+

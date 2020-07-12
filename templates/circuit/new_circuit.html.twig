@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+body {
+  background: url("https://chapelboromedia.s3.amazonaws.com/uploads/2019/04/19113915/aircraft-aircraft-wing-airplane-2007401-e1555688403566.jpg")repeat center center fixed;
+}
+#login .container #login-row #login-column .login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-image: linear-gradient(to bottom, #aec1c3, #a9b5b7, #bcc5c6, #cfd5d5, #e3e5e5);
+}
+#login .container #login-row #login-column .login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column .login-box #login-form #register-link {
+  margin-top: -85px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<body>
+	<div id="login">
+    <h3 class="text-center text-white pt-5"></h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div class="login-box col-md-12">
+                    
+                        <h3 class="text-center text-info">ajouter un circuit</h3>
+                        <div class="form-group">
+                           
+                           {{ form_start(form) }}
+                           {{form_widget(form)}}
+                            <button  class="btn btn-primary">Save</button>
+                        {{ form_end(form) }}    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
